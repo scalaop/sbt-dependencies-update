@@ -17,6 +17,8 @@ class Dependency {
 class SbtVersionUpdater {
     def migrate = false
 
+    def buildFolder = "/build"
+
     def config
 
     static void main(String[] args) {
@@ -48,7 +50,7 @@ class SbtVersionUpdater {
     }
 
     def readBuildSbt() {
-        new File("/build/build.sbt").text
+        new File("$buildFolder/build.sbt").text
     }
 
     def updateDependency(dependency) {
@@ -138,8 +140,8 @@ class SbtVersionUpdater {
 
     def applyNewBuildSbt(newBuildSbtTxt) {
         if (migrate) {
-            def oldFile = new File("./build.sbt")
-            def newFile = new File("./new-build.sbt")
+            def oldFile = new File("$buildFolder/build.sbt")
+            def newFile = new File("$buildFolder/new-build.sbt")
 
             newFile.delete()
             newFile << newBuildSbtTxt
