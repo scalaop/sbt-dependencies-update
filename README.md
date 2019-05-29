@@ -48,7 +48,7 @@ The script will keep indent, scope, exclusions and comments.
 At the moment, it does support dependencies in `build.sbt` defined in the following format:
 
 ```scala
-"groupId" (%% | %) "artifactId" % "version" % Scop Exclusion (// Comment | /* Comment */)
+"groupId" (%% | %) "artifactId" % "version" % Scope Exclusion (// Comment | /* Comment */)
 ```
 
 The dependency should be specified in one line.
@@ -59,10 +59,12 @@ The configuration is kept in `sbt-update.conf` and default values are:
 ```groovy
 nexus.host = 'https://repo.maven.apache.org/maven2'
 groups = '.*'
+scala.version = '2.11'
 ```
 
 - `nexus.host` the host is pointing to nexus repository, it can be your corporate Nexus
 - `groups` regex defines the `groupId` of artifacts that has to be updated
+- `scala.version` Scala version
 
 In order to orverride the configuration, just mount new one as a volume:
 

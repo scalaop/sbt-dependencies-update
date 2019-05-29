@@ -55,7 +55,7 @@ class SbtVersionUpdater {
 
     def updateDependency(dependency) {
         try {
-            def scalaArtifactId = dependency.artifactId + (dependency.crossCompiled ? "_2.11" : "")
+            def scalaArtifactId = dependency.artifactId + (dependency.crossCompiled ? "_${config.scala.version}" : "")
             def nexusGroupId = dependency.groupId.replaceAll("\\.", "/")
 
             def metaData = String.format(config.nexus.host + "/%s/%s/maven-metadata.xml", nexusGroupId, scalaArtifactId).toURL().text
