@@ -49,7 +49,8 @@ scala.version = '2.11'
                 def dependency = resolveDependency(line)
 
                 if (dependency) {
-                    sb.append updateDependency(dependency) + "\n"
+                    def newLine = updateDependency(dependency)
+                    sb.append((newLine?:line) + "\n")
                 }
             } else {
                 sb.append line + "\n"
