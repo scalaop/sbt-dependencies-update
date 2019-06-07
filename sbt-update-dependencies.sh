@@ -11,10 +11,15 @@ class Dependency {
     def comma
     def comment
     def line
-
 }
 
 class SbtVersionUpdater {
+    def defaultConfiguration = """
+nexus.host = 'https://repo.maven.apache.org/maven2'
+groups = '.*'
+scala.version = '2.11'
+    """
+
     def migrate = false
 
     def buildFolder = "/build"
@@ -27,7 +32,12 @@ class SbtVersionUpdater {
 
 
     SbtVersionUpdater() {
-        config = new ConfigSlurper().parse(new File("/sbt-update.conf").toURI().toURL())
+        def configFile = new File("/sbt-update.conf")
+        if (configFile.exists()){
+           config = new ConfigSlurper().parse(configFile.toURI().toURL())
+        } else {
+           config = new ConfigSlurper().parse(defaultConfiguration)
+        }
     }
 
     def updateSbt() {

@@ -9,7 +9,7 @@ lazy val root = (project in file("."))
 lazy val compileDependencies = Seq(
   "io.opentracing.contrib" %  "opentracing-concurrent" % "0.2.0" % Provided exclude("net.sf.jopt-simple", "jopt-simple"), // Comment
   "io.opentracing" %  "opentracing-util" % "0.31.0", /* Comment */
-  "org.apache.kafka" % "kafka-clients" % "2.0.0" exclude("org.slf4j", "slf4j-api"),
+  "org.apache.kafka" % "kafka-clients" % "2.0.0" exclude("org.slf4j", "slf4j-api")
 )
 
 lazy val testDependencies = Seq(

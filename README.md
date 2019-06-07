@@ -5,8 +5,8 @@ The sbt-dependencies-update goal will update corresponding dependencies used in 
 Here is an example of what this looks like:
 
 ```bash
-docker pull bapbap/sbt-dependencies-update
-docker run --rm -ti -v $PWD/example:/build bapbap/sbt-dependencies-update
+docker pull scalaop/sbt-dependencies-update
+docker run --rm -ti -v $PWD/example:/build scalaop/sbt-dependencies-update
 ```
 
 The output of an execution will be:
@@ -32,7 +32,7 @@ lazy val root = (project in file("."))
 lazy val compileDependencies = Seq(
   "io.opentracing.contrib" % "opentracing-concurrent" % "0.4.0" % Provided exclude("net.sf.jopt-simple", "jopt-simple"), // Comment
   "io.opentracing" % "opentracing-util" % "0.33.0" /* Comment */
-  "org.apache.kafka" % "kafka-clients" % "2.2.0" exclude("org.slf4j", "slf4j-api"),
+  "org.apache.kafka" % "kafka-clients" % "2.2.0" exclude("org.slf4j", "slf4j-api")
 )
 
 lazy val testDependencies = Seq(
@@ -69,5 +69,5 @@ scala.version = '2.11'
 In order to orverride the configuration, just mount new one as a volume:
 
 ```bash
-docker run --rm -ti -v $PWD/example:/build -v $PWD/sbt-update.conf:/sbt-update.conf bapbap/sbt-dependencies-update
+docker run --rm -ti -v $PWD/example:/build -v $PWD/sbt-update.conf:/sbt-update.conf scalaop/sbt-dependencies-update
 ```
