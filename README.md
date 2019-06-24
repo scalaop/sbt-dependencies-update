@@ -1,5 +1,7 @@
 # Checking and updating for new dependency updates
 
+[![Build Status](https://travis-ci.org/scalaop/sbt-dependencies-update.svg?branch=master)](https://travis-ci.org/scalaop/sbt-dependencies-update)
+
 The sbt-dependencies-update goal will update corresponding dependencies used in your project in `build.sbt`.
 
 Here is an example of what this looks like:
